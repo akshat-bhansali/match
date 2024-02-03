@@ -17,6 +17,7 @@ const Navbar = () => {
         </div>
         <div className="flex gap-10">
           <Link href="/" passHref>
+            {/* added a commenr here */}
             <li className="hover:text-gray-300">Home</li>
           </Link>
           <Link href="/hackathon" passHref>
