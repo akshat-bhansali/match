@@ -752,7 +752,7 @@ const Page = () => {
                 <div>
                   <button
                     type="button"
-                    className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg  px-3 py-1 border-gray-600 text-center mx-4 text-xs"
+                    className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4  border focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg  px-3 py-1 border-gray-600 text-center mx-4 text-xs"
                   >
                     Visit
                   </button>
@@ -780,13 +780,13 @@ const Page = () => {
                   <span className="">Hackathon Name</span>
                 </th>
                 <th className="px-6 py-3 text-left text-sm font-medium text-gray-300 uppercase tracking-wider ">
-                  <span className="invisible md:visible">Deadline</span>
+                  <span className="">Deadline</span>
                 </th>
                 <th className="px-6 py-3 text-left text-sm font-medium text-gray-300 uppercase tracking-wider">
-                  <span className=" invisible md:visible">Link</span>
+                  <span className=" invisible md:visible  absolute md:relative  ">Links</span>
                 </th>
                 <th className="px-6 py-3 text-left text-sm font-medium text-gray-300 uppercase tracking-wider">
-                <span className=" invisible md:visible">Description</span>
+                <span className=" invisible md:visible absolute md:relative ">Description</span>
                 </th>
                 <th className="px-6 py-3 text-left text-sm font-medium text-gray-300 uppercase tracking-wider">
                 <span className=" ">Apply</span>
@@ -799,27 +799,27 @@ const Page = () => {
                   new Date(hackathon.deadline) > new Date() && (
                     <tr key={index}>
                       <td className="py-2 px-3 text-sm">{hackathon.name}</td>
-                      <td className="py-2 px-3 text-sm">
+                      <td className="py-2 px-3 text-sm  ">
                         {convertDate(hackathon.deadline)}
                       </td>
                       <td className="py-2 px-3 text-sm">
                         <a
                           href={hackathon.link}
                           target="_blank"
-                          className="text-blue-500 "
+                          className="text-blue-500 invisible md:visible absolute md:relative"
                         >
                           Website
                         </a>
                       </td>
-                      <td className="py-2 px-3 text-sm">
+                      <td className="py-2 px-3 text-sm  invisible md:visible  absolute md:relative">
                         {hackathon.description}
                       </td>
-                      <td className="py-2 px-3 text-sm">
+                      <td className="py-2 px-3 text-sm ">
                         <button
                           onClick={() => {
                             router.push(`/hackathon/${hackathon._id}`);
                           }}
-                          className="bg-blue-900 rounded px-4 py-2"
+                          className="flex flex-row w-1/2 border text-center bg-red-600 rounded-full justify-center text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium    py-1 border-gray-600  mx-4 text-xs"
                         >
                           Visit
                         </button>
@@ -828,68 +828,74 @@ const Page = () => {
                   )
               )}
             </tbody>
+
+            
           </table>
         </div>
         Closed
         <table className="min-w-full overflow-x-auto border-gray-600 border  mb-7 ">
-          <thead className="uppercase bg-gray-50 dark:bg-gray-700 text-gray-100">
-            <tr>
-              <th className="px-6 py-3 text-left text-sm font-medium text-gray-300 uppercase tracking-wider">
-                Hackathon Name
-              </th>
-              <th className="px-6 py-3 text-left text-sm font-medium text-gray-300 uppercase tracking-wider">
-                Deadline
-              </th>
-              <th className="px-6 py-3 text-left text-sm font-medium text-gray-300 uppercase tracking-wider">
-                Link
-              </th>
-              <th className="px-6 py-3 text-left text-sm font-medium text-gray-300 uppercase tracking-wider">
-                Description
-              </th>
-              <th className="px-6 py-3 text-left text-sm font-medium text-gray-300 uppercase tracking-wider">
-                Apply
-              </th>
-            </tr>
-          </thead>
+        <thead className="uppercase bg-gray-50 dark:bg-gray-700 text-gray-100 ">
+              <tr>
+                <th className="px-6 py-3 text-left text-sm font-medium text-gray-300 uppercase tracking-wider ">
+                  <span className="">Hackathon Name</span>
+                </th>
+                <th className="px-6 py-3 text-left text-sm font-medium text-gray-300 uppercase tracking-wider ">
+                  <span className=" ">Deadline</span>
+                </th>
+                <th className="px-6 py-3 text-left text-sm font-medium text-gray-300 uppercase tracking-wider">
+                  <span className=" invisible md:visible  absolute md:relative ">Link</span>
+                </th>
+                <th className="px-6 py-3 text-left text-sm font-medium text-gray-300 uppercase tracking-wider">
+                <span className=" invisible md:visible absolute md:relative ">Description</span>
+                </th>
+                <th className="px-6 py-3 text-left text-sm font-medium text-gray-300 uppercase tracking-wider">
+                <span className=" ">Apply</span>
+                </th>
+              </tr>
+            </thead>
 
-          <tbody>
+          <tbody className=" container">
             {userHackathons?.map(
               (hackathon: any, index: any) =>
                 new Date(hackathon.deadline) < new Date() && (
                   <tr key={index}>
-                    <td className="py-2 px-3 text-sm">{hackathon.name}</td>
-                    <td className="py-2 px-3 text-sm">
+                    <td className="py-2 px-3 text-sm ">{hackathon.name}</td>
+                    <td className="py-2 px-3 text-sm   ">
                       {convertDate(hackathon.deadline)}
                     </td>
-                    <td className="py-2 px-3 text-sm">
+                    <td className="py-2 px-3 text-sm ">
                       <a
                         href={hackathon.link}
                         target="_blank"
-                        className="text-blue-500"
+                        className="text-blue-500 invisible md:visible   md:relative "
                       >
                         Website
                       </a>
                     </td>
-                    <td className="py-2 px-3 text-sm">
+                    <td className="py-2 px-3 text-sm  basis-4 flex   invisible md:visible   md:relative">
                       {hackathon.description}
                     </td>
-                    <td className="py-2 px-3 text-sm">
+                    <td className="py-2 px-3 text-sm  ">
                       <button
                         onClick={() => {
                           router.push(`/hackathon/${hackathon._id}`);
                         }}
-                        className="bg-blue-900 rounded px-4 py-2"
+                        className="flex flex-row w-1/2 border text-center bg-red-600 rounded-xl justify-center text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium   px-2 py-1 border-gray-600  mx-4 text-xs"
                       >
                         Visit
                       </button>
                     </td>
                   </tr>
+                
                 )
             )}
           </tbody>
+          
         </table>
+
+
         <div className="flex flex-col">
-          <div className="flex flex-row">
+          <div className="flex flex-row ">
             {Array.from({ length: pages }, (_, index) => index + 1).map(
               (i, id) => {
                 return (
@@ -916,7 +922,7 @@ const Page = () => {
                   </div>
                   <a
                     href={(repo as any)?.html_url}
-                    className="bg-blue-500 text-white rounded-md p-2 px-3 text-xs hover:bg-blue-600 "
+                    className="bg-blue-500 text-white rounded-full py-1 px-3 text-xs hover:bg-blue-600 "
                     target="_blank"
                     rel="noopener noreferrer"
                   >
